@@ -13,7 +13,7 @@ const TypewriterText = ({ text, className = "", delay = 0 }: TypewriterTextProps
   
   const container = {
     hidden: { opacity: 0 },
-    visible: (i = 1) => ({
+    visible: (_i = 1) => ({
       opacity: 1,
       transition: { staggerChildren: 0.06, delayChildren: delay }
     })
