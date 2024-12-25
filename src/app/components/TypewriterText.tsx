@@ -9,7 +9,7 @@ interface TypewriterTextProps {
 }
 
 const TypewriterText = ({ text, className = "", delay = 0 }: TypewriterTextProps) => {
-  const words = text.split('');
+  const words = text.split('').map(char => char === ' ' ? '\u00A0' : char);
   
   const container = {
     hidden: { opacity: 0 },

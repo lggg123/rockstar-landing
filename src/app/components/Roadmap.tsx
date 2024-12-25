@@ -45,14 +45,16 @@ const RoadmapPhase: React.FC<RoadmapPhaseProps> = ({ phase, title, items, icon, 
             <div className="flex items-center gap-4">
               <TypewriterText 
                 text={phase}
-                className="text-pink-500 font-audiowide whitespace-nowrap"
+                className="text-cyan-400 font-audiowide whitespace-nowrap text-lg sm:text-xl
+                  drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]"
                 delay={0.3 + index * 0.1}
               />
               <div className="flex-grow h-0.5 bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-600" />
             </div>
             <TypewriterText 
               text={title}
-              className="text-xl font-audiowide text-cyan-400 mb-4"
+              className="text-xl sm:text-2xl font-audiowide text-cyan-400 mb-4
+                drop-shadow-[0_0_8px_rgba(0,255,255,0.5)]"
               delay={0.4 + index * 0.1}
             />
             <ul className="space-y-2">
@@ -127,7 +129,7 @@ const Roadmap: React.FC = () => {
       <div className="container mx-auto px-4 relative">
         {/* Title */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-16 bg-black/80 backdrop-blur-md py-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
@@ -141,7 +143,7 @@ const Roadmap: React.FC = () => {
         </motion.div>
 
         {/* Phases */}
-        <div className="space-y-16 max-w-4xl mx-auto">
+        <div className="space-y-16 max-w-4xl mx-auto overflow-x-hidden">
           {phases.map((phase, index) => (
             <RoadmapPhase
               key={index}

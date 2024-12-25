@@ -20,15 +20,17 @@ export default {
         'purchase-bg': "url('/card-backgrounds/purchase-bg.jpg')",
       },
       colors: {
-        'pink': '#FF007F',
-        'cyan': '#00FFFF',
-        'purple': '#9400D3',
-        'black': '#000000',
+        custom: {
+          'pink': '#FF007F',
+          'cyan': '#00FFFF',
+          'purple': '#9400D3',
+          'black': '#000000',
+        }
       },
       boxShadow: {
-        'glow-cyan': '0 0 15px theme(colors.cyan)',
-        'glow-pink': '0 0 15px theme(colors.pink)',
-        'glow-purple': '0 0 15px theme(colors.purple)',
+        'glow-cyan': '0 0 15px theme(colors.custom.cyan)',
+        'glow-pink': '0 0 15px theme(colors.custom.pink)',
+        'glow-purple': '0 0 15px theme(colors.custom.purple)',
       },
     },
   },
