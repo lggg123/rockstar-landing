@@ -11,7 +11,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Toaster, toast } from 'react-hot-toast';
 import { isValidSuiAddress } from "@mysten/sui.js/utils";
 
@@ -174,10 +174,79 @@ export default function Home() {
                 </div>
               </div>
 
-              <button className="mt-8 sm:mt-12 px-8 sm:px-12 py-3 sm:py-4 bg-gradient-to-r from-purple-900 via-black to-purple-900 rounded-full text-lg sm:text-xl font-orbitron font-bold tracking-wider text-white hover:scale-105 transition-all duration-300 border-2 border-cyan-400 shadow-lg shadow-purple-500/50 hover:shadow-cyan-400/50 relative group">
-                <span className="relative z-10">COMING SOON!</span>
+              <button 
+                onClick={() => setShowWhitelistModal(true)}
+                className="mt-8 sm:mt-12 px-8 sm:px-12 py-3 sm:py-4 bg-gradient-to-r from-purple-900 via-black to-purple-900 rounded-full text-lg sm:text-xl font-orbitron font-bold tracking-wider text-white hover:scale-105 transition-all duration-300 border-2 border-cyan-400 shadow-lg shadow-purple-500/50 hover:shadow-cyan-400/50 relative group"
+              >
+                <span className="relative z-10">JOIN WHITELIST</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-cyan-400 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
               </button>
+
+              {/* Whitelist Modal */}
+              {showWhitelistModal && (
+                <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+                  <div className="bg-black/90 border-2 border-cyan-400/30 rounded-xl p-6 max-w-md w-full">
+                    <h2 className="text-2xl font-audiowide text-cyan-400 mb-6">Join the Whitelist</h2>
+                    <form onSubmit={handleWhitelistSubmit} className="space-y-4">
+                      <div>
+                        <label className="block text-gray-400 mb-2 font-orbitron text-sm">SUI Wallet Address</label>
+                        <input
+                          type="text"
+                          value={whitelistForm.wallet}
+                          onChange={(e) => setWhitelistForm(prev => ({ ...prev, wallet: e.target.value }))}
+                          className="w-full bg-black/60 border-2 border-cyan-400/30 rounded px-4 py-2 text-white font-orbitron focus:border-cyan-400 focus:outline-none"
+                          placeholder="0x..."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-gray-400 mb-2 font-orbitron text-sm">Telegram Username</label>
+                        <input
+                          type="text"
+                          value={whitelistForm.telegram}
+                          onChange={(e) => setWhitelistForm(prev => ({ ...prev, telegram: e.target.value }))}
+                          className="w-full bg-black/60 border-2 border-cyan-400/30 rounded px-4 py-2 text-white font-orbitron focus:border-cyan-400 focus:outline-none"
+                          placeholder="@username"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-gray-400 mb-2 font-orbitron text-sm">Twitter Handle</label>
+                        <input
+                          type="text"
+                          value={whitelistForm.twitter}
+                          onChange={(e) => setWhitelistForm(prev => ({ ...prev, twitter: e.target.value }))}
+                          className="w-full bg-black/60 border-2 border-cyan-400/30 rounded px-4 py-2 text-white font-orbitron focus:border-cyan-400 focus:outline-none"
+                          placeholder="@handle"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-gray-400 mb-2 font-orbitron text-sm">Email Address</label>
+                        <input
+                          type="email"
+                          value={whitelistForm.email}
+                          onChange={(e) => setWhitelistForm(prev => ({ ...prev, email: e.target.value }))}
+                          className="w-full bg-black/60 border-2 border-cyan-400/30 rounded px-4 py-2 text-white font-orbitron focus:border-cyan-400 focus:outline-none"
+                          placeholder="your@email.com"
+                        />
+                      </div>
+                      <div className="flex justify-end gap-4 mt-6">
+                        <button
+                          type="button"
+                          onClick={() => setShowWhitelistModal(false)}
+                          className="px-6 py-2 bg-black/60 border-2 border-pink-500/30 hover:border-pink-500 rounded text-pink-500 font-orbitron transition-all"
+                        >
+                          Cancel
+                        </button>
+                        <button
+                          type="submit"
+                          className="px-6 py-2 bg-black/60 border-2 border-cyan-400/30 hover:border-cyan-400 rounded text-cyan-400 font-orbitron transition-all"
+                        >
+                          Submit
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              )}
 
               {/* Social Links */}
               <div className="mt-6 sm:mt-8">
