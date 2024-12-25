@@ -32,9 +32,14 @@ const SecurityFeatures = () => {
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          viewport={{ once: true, margin: "-20px" }}
+          transition={{ 
+            duration: 0.8,
+            ease: "easeOut",
+            opacity: { duration: 1 }
+          }}
         >
           <h2 className="text-4xl md:text-5xl font-audiowide text-transparent bg-clip-text 
             bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-600 mb-4">
@@ -50,8 +55,15 @@ const SecurityFeatures = () => {
         {/* Vesting Schedule */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          viewport={{ once: true, margin: "-20px" }}
+          transition={{ 
+            duration: 0.8,
+            ease: "easeOut",
+            opacity: { duration: 1 },
+            delay: 0.2
+          }}
           className="max-w-4xl mx-auto mb-16 bg-black/60 backdrop-blur-sm p-8 rounded-xl
             border-2 border-cyan-400/30 hover:border-cyan-400 transition-all duration-500"
         >
@@ -140,8 +152,14 @@ const SecurityFeatures = () => {
         <div className="grid md:grid-cols-3 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ 
+              duration: 0.8,
+              ease: "easeOut",
+              opacity: { duration: 1 }
+            }}
             className="bg-black/60 backdrop-blur-sm p-8 rounded-xl
               border-2 border-cyan-400/30 hover:border-cyan-400 transition-all duration-500"
           >
@@ -154,9 +172,15 @@ const SecurityFeatures = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ 
+              duration: 0.8,
+              ease: "easeOut",
+              opacity: { duration: 1 },
+              delay: 0.2
+            }}
             className="bg-black/60 backdrop-blur-sm p-8 rounded-xl
               border-2 border-cyan-400/30 hover:border-cyan-400 transition-all duration-500"
           >
@@ -169,9 +193,15 @@ const SecurityFeatures = () => {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ 
+              duration: 0.8,
+              ease: "easeOut",
+              opacity: { duration: 1 },
+              delay: 0.4
+            }}
             className="bg-black/60 backdrop-blur-sm p-8 rounded-xl
               border-2 border-cyan-400/30 hover:border-cyan-400 transition-all duration-500"
           >
