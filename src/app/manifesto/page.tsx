@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { FaChevronLeft, FaUmbrellaBeach, FaMoon, FaBuilding, FaCar, FaCity } from 'react-icons/fa';
+import { FaChevronLeft, FaCar, FaCity } from 'react-icons/fa';
 import { GiPalmTree } from 'react-icons/gi';
 
 // Dynamically import the CriminalEmpire component to avoid SSR issues with the terminal
