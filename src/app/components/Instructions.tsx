@@ -43,14 +43,14 @@ export const Instructions = () => (
   <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto px-2 sm:px-4">
     <InstructionalCard 
       step="Step 1" 
-      title="Download SUI wallet or Surf Wallet and create a wallet" 
+      title="Download SUI wallet or Surf Wallet" 
       bgClass="bg-wallet-bg"
       glowColor="glow-cyan"
       icon={<BiWallet />}
     />
     <InstructionalCard 
       step="Step 2" 
-      title="Buy SUI." 
+      title="Create a wallet and buy SUI." 
       bgClass="bg-sui-bg"
       glowColor="glow-cyan"
       icon={<FaCoins />}
