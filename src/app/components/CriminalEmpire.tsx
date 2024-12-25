@@ -50,10 +50,11 @@ const sections: Section[] = [
       'DISTRIBUTION:',
       '- 70% Liquidity Pool',
       '- 10% Public Sale',
-      '- 8% Staking Rewards',
       '- 7% Marketing & Community',
+      '- 6% Staking Rewards',
       '- 3% Team (Vested)',
-      '- 2% Reserve Fund'
+      '- 2% Reserve Fund',
+      '- 2% Airdrops'
     ],
     locked: true,
     type: 'assets'
