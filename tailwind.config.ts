@@ -13,7 +13,7 @@ export default {
         'audiowide': ['Audiowide', 'cursive'],
       },
       backgroundImage: {
-        'hero-bg': "url('/rockst_back.png')",
+        'hero-bg': "url('/gta_back.png')",
         'wallet-bg': "url('/card-backgrounds/wallet-bg.jpg')",
         'sui-bg': "url('/card-backgrounds/sui-bg.jpg')",
         'connect-bg': "url('/card-backgrounds/connect-bg.jpg')",
