@@ -71,7 +71,7 @@ export default function HeroSection() {
         {/* Social Links */}
         <div className="mt-6 sm:mt-8">
           <div className="flex justify-center gap-6 sm:gap-8 items-center">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+            <a href="https://x.com/rockstarcoin0" target="_blank" rel="noopener noreferrer"
               className="text-2xl sm:text-3xl text-cyan-400 hover:text-pink-500 transition-colors duration-300 hover:scale-110 transform hover:drop-shadow-[0_0_8px_rgba(255,0,127,0.5)]">
               <FaXTwitter />
             </a>
