@@ -57,7 +57,7 @@ const WantedFooter = () => {
       <div className="absolute inset-0 bg-black/80" />
       <div className="absolute inset-0 opacity-30"
         style={{
-          backgroundImage: 'url("/rockst_back.png")',
+          backgroundImage: 'url("/gta_back.png")',
           backgroundAttachment: 'fixed',
           backgroundSize: 'cover',
           backgroundPosition: 'center'
