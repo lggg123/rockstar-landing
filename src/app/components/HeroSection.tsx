@@ -64,7 +64,7 @@ export default function HeroSection() {
         <button 
           className="mt-8 sm:mt-12 px-8 sm:px-12 py-3 sm:py-4 bg-gradient-to-r from-purple-900 via-black to-purple-900 rounded-full text-lg sm:text-xl font-orbitron font-bold tracking-wider text-white hover:scale-105 transition-all duration-300 border-2 border-cyan-400 shadow-lg shadow-purple-500/50 hover:shadow-cyan-400/50 relative group"
         >
-          <span className="relative z-10">COMING SOON</span>
+          <span className="relative z-10">COMING SOON!</span>
           <div className="absolute inset-0 bg-gradient-to-r from-purple-600 via-cyan-400 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
         </button>
 

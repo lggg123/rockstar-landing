@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: '$Rockstar',
-  description: 'Join $Rockstar and immerse yourself in a world where bold actions lead to legendary achievements. Connect with a vibrant community and embark on your next adventure.',
+  title: 'Rockstar',
+  description: 'Join Rockstar and immerse yourself in a world where bold actions lead to legendary achievements. Connect with a vibrant community and embark on your next adventure.',
   icons: [
     {
       rel: 'icon',

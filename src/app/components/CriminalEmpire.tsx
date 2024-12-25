@@ -46,7 +46,7 @@ const sections: Section[] = [
     id: 'assets',
     title: 'ASSET ALLOCATION',
     content: [
-      'TOTAL SUPPLY: 1,000,000,000 $ROCKSTAR',
+      'TOTAL SUPPLY: 1,000,000,000 $(Tiker to be announced)',
       'DISTRIBUTION:',
       '- 70% Liquidity Pool',
       '- 10% Public Sale',
