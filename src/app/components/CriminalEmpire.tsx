@@ -88,6 +88,12 @@ const CriminalEmpire = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [terminalLines]);
+
   const handleCommand = (command: string) => {
     const newLines = [...terminalLines, `> ${command}`];
     
@@ -153,53 +159,68 @@ const CriminalEmpire = () => {
     }
   };
 
-  useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
-    }
-  }, [terminalLines]);
-
   return (
-    <section className="py-20 relative overflow-hidden" id="manifesto">
+    <motion.section 
+      className="py-20 relative overflow-hidden opacity-0 animate-fadeIn"
+      id="manifesto"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      layout
+    >
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+        .section-content {
+          transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .section-content.locked {
+          opacity: 0.5;
+          transform: translateY(10px);
+        }
+        .section-content.unlocked {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      `}</style>
+
       <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-900/20 to-black" />
       
       <div className="container mx-auto px-4 relative">
         {/* Title */}
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          viewport={{ once: true, margin: "-20px" }}
-          transition={{ 
-            duration: 0.8,
-            ease: "easeOut",
-            opacity: { duration: 1 }
-          }}
+          layout
         >
-          <h2 className="text-4xl md:text-5xl font-audiowide text-transparent bg-clip-text 
-            bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-600 mb-4">
+          <motion.h2 
+            className="text-4xl md:text-5xl font-audiowide text-transparent bg-clip-text 
+              bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-600 mb-4"
+            layout
+          >
             Criminal Empire Manifesto
-          </h2>
-          <div className="w-24 h-1 mx-auto bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
+          </motion.h2>
+          <motion.div 
+            className="w-24 h-1 mx-auto bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
+            layout
+          />
         </motion.div>
 
         {/* Main Content */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <motion.div 
+          className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto"
+          layout
+        >
           {/* Custom Terminal Section */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            viewport={{ once: true, margin: "-20px" }}
-            transition={{ 
-              duration: 0.8,
-              ease: "easeOut",
-              opacity: { duration: 1 }
-            }}
             className="bg-black/60 backdrop-blur-sm p-4 rounded-xl border-2 border-cyan-400/30
               hover:border-cyan-400 transition-all duration-500"
             onClick={() => inputRef.current?.focus()}
+            layout
           >
             <div className="bg-black rounded-lg p-2 h-[400px] font-mono text-sm">
               {/* Terminal Header */}
@@ -242,63 +263,59 @@ const CriminalEmpire = () => {
 
           {/* Content Section */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            viewport={{ once: true, margin: "-20px" }}
-            transition={{ 
-              duration: 0.8,
-              ease: "easeOut",
-              opacity: { duration: 1 },
-              delay: 0.2
-            }}
             className="space-y-6"
+            layout
           >
-            {sections.map((section, index) => (
+            {sections.map((section) => (
               <motion.div
                 key={section.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ 
-                  opacity: unlockedSections.includes(section.id) ? 1 : 0.5,
-                  y: 0 
-                }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ 
-                  duration: 0.6,
-                  ease: "easeOut",
-                  delay: index * 0.1
-                }}
-                className={`bg-black/60 backdrop-blur-sm p-6 rounded-xl border-2 
+                className={`section-content ${
+                  unlockedSections.includes(section.id) ? 'unlocked' : 'locked'
+                } bg-black/60 backdrop-blur-sm p-6 rounded-xl border-2 
                   ${unlockedSections.includes(section.id) 
                     ? 'border-cyan-400/30 hover:border-cyan-400' 
                     : 'border-gray-700/30 hover:border-gray-700'
-                  } transition-all duration-500`}
+                  } transition-all duration-500 ${!unlockedSections.includes(section.id) ? 'cursor-pointer' : ''}`}
+                onClick={() => !unlockedSections.includes(section.id) && unlockSection(section.id)}
+                layout
               >
-                <h3 className="text-xl font-audiowide text-[#00FFFF] mb-4 flex items-center gap-2">
+                <motion.h3 
+                  className="text-xl font-audiowide text-[#00FFFF] mb-4 flex items-center gap-2"
+                  layout
+                >
                   {section.title}
                   {!unlockedSections.includes(section.id) && (
                     <span className="text-red-500 text-sm">LOCKED</span>
                   )}
-                </h3>
-                <AnimatePresence>
+                </motion.h3>
+                <AnimatePresence mode="wait">
                   {unlockedSections.includes(section.id) ? (
                     <motion.div
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
                       className="space-y-2 font-orbitron text-gray-300"
+                      layout
                     >
                       {section.content.map((line, index) => (
-                        <p key={index} className="leading-relaxed">
+                        <motion.p 
+                          key={index} 
+                          className="leading-relaxed"
+                          layout
+                        >
                           {line}
-                        </p>
+                        </motion.p>
                       ))}
                     </motion.div>
                   ) : (
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
                       className="text-red-500 font-mono"
+                      layout
                     >
                       <TypeAnimation
                         sequence={[
@@ -316,9 +333,9 @@ const CriminalEmpire = () => {
               </motion.div>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
