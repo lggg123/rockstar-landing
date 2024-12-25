@@ -37,7 +37,7 @@ const options = {
     },
     tooltip: {
       callbacks: {
-        label: function(context: any) {
+        label: function(context: { label: string; parsed: number; dataIndex: number }) {
           const label = context.label || '';
           const value = context.parsed || 0;
           const tokens = tokenomicsData[context.dataIndex].tokens;

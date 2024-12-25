@@ -77,7 +77,6 @@ const sections: Section[] = [
 ];
 
 const CriminalEmpire = () => {
-  const [activeSection, setActiveSection] = useState<string>('mission');
   const [terminalLines, setTerminalLines] = useState<string[]>([
     '> Initializing secure connection...',
     '> Accessing Criminal Empire database...',

@@ -10,6 +10,7 @@ import { FaXTwitter, FaTelegram, FaDiscord, FaCopy } from 'react-icons/fa6';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Toaster, toast } from 'react-hot-toast';
 import { isValidSuiAddress } from "@mysten/sui.js/utils";
@@ -106,9 +107,11 @@ export default function Home() {
           <div className="relative h-screen fixed inset-0 -mt-16 pt-16">
             {/* Logo */}
             <div className="absolute top-20 left-4">
-              <img 
+              <Image
                 src="/rockstar-gta-logo.jpg" 
                 alt="Logo" 
+                width={100}
+                height={100}
                 className="w-[60px] sm:w-[70px] md:w-[80px] lg:w-[100px] animate-pulse rounded-xl shadow-lg
                   border-2 border-cyan-400/30 hover:border-cyan-400 transition-colors duration-300" 
               />

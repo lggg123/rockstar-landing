@@ -4,7 +4,6 @@ import { isValidSuiAddress } from '@mysten/sui.js/utils';
 
 const PINATA_API_KEY = process.env.PINATA_API_KEY;
 const PINATA_SECRET_KEY = process.env.PINATA_SECRET_KEY;
-const PINATA_BASE_URL = 'https://api.pinata.cloud/';
 
 export async function POST(req: Request) {
     try {
