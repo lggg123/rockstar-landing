@@ -40,35 +40,47 @@ const InstructionalCard = ({ title, step, bgClass, glowColor, icon }: Instructio
 );
 
 export const Instructions = () => (
-  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto px-2 sm:px-4">
-    <InstructionalCard 
-      step="Step 1" 
-      title="Download SUI wallet or Surf Wallet" 
-      bgClass="bg-wallet-bg"
-      glowColor="glow-cyan"
-      icon={<BiWallet />}
-    />
-    <InstructionalCard 
-      step="Step 2" 
-      title="Create a wallet and buy SUI." 
-      bgClass="bg-sui-bg"
-      glowColor="glow-cyan"
-      icon={<FaCoins />}
-    />
-    <InstructionalCard 
-      step="Step 3" 
-      title="Head to Cetus Protocol" 
-      bgClass="bg-connect-bg"
-      glowColor="glow-purple"
-      icon={<HiOutlineLink />}
-    />
-    <InstructionalCard 
-      step="Step 4" 
-      title="Purchase TBA." 
-      bgClass="bg-purchase-bg"
-      glowColor="glow-cyan"
-      icon={<FaRocket />}
-    />
+  <div className="bg-gradient-to-b from-black/80 via-purple-900/90 to-black text-white py-12 sm:py-16 relative z-20">
+    <div className="container mx-auto px-4 sm:px-6">
+      <div className="relative py-8 mb-12">
+        <h2 className="text-4xl md:text-5xl font-audiowide text-center cyber-heading bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-600">
+          How to Buy
+        </h2>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-pink-500 to-transparent"></div>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-5xl mx-auto">
+        <InstructionalCard 
+          step="Step 1" 
+          title="Download SUI wallet or Surf Wallet" 
+          bgClass="bg-wallet-bg"
+          glowColor="glow-cyan"
+          icon={<BiWallet />}
+        />
+        <InstructionalCard 
+          step="Step 2" 
+          title="Create a wallet and buy SUI." 
+          bgClass="bg-sui-bg"
+          glowColor="glow-cyan"
+          icon={<FaCoins />}
+        />
+        <InstructionalCard 
+          step="Step 3" 
+          title="Head to Cetus Protocol" 
+          bgClass="bg-connect-bg"
+          glowColor="glow-purple"
+          icon={<HiOutlineLink />}
+        />
+        <InstructionalCard 
+          step="Step 4" 
+          title="Purchase TBA." 
+          bgClass="bg-purchase-bg"
+          glowColor="glow-cyan"
+          icon={<FaRocket />}
+        />
+      </div>
+    </div>
   </div>
 );
 
