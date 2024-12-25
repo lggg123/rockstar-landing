@@ -8,18 +8,21 @@ const SecurityFeatures = () => {
   const totalTokens = 30_000_000;
   const immediateUnlock = 6_000_000;
   const vestedTokens = 24_000_000;
-  const monthlyRelease = vestedTokens / 12;
 
-  const calculateReleasedTokens = (month: number) => {
-    return immediateUnlock + (monthlyRelease * month);
+  const calculateTokensReleased = (month: number) => {
+    if (month === null) return 0;
+    const monthlyRelease = vestedTokens / 12;
+    return immediateUnlock + Math.min(vestedTokens, monthlyRelease * month);
+  };
+
+  const calculateProgress = (month: number) => {
+    if (month === null) return 0;
+    const tokensReleased = calculateTokensReleased(month);
+    return Math.min(100, (tokensReleased / totalTokens) * 100);
   };
 
   const formatNumber = (num: number) => {
     return new Intl.NumberFormat('en-US').format(num);
-  };
-
-  const calculateProgress = (month: number) => {
-    return (calculateReleasedTokens(month) / totalTokens) * 100;
   };
 
   return (
@@ -65,17 +68,17 @@ const SecurityFeatures = () => {
           {/* Interactive Timeline */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-sm text-gray-400">Month 0</span>
-              <span className="text-sm text-gray-400">Month 11</span>
+              <span className="text-sm text-gray-400">Month 1</span>
+              <span className="text-sm text-gray-400">Month 12</span>
             </div>
             <div className="grid grid-cols-12 gap-1">
               {Array.from({ length: 12 }, (_, i) => (
                 <div
                   key={i}
-                  onMouseEnter={() => setSelectedMonth(i)}
+                  onMouseEnter={() => setSelectedMonth(i + 1)}
                   onMouseLeave={() => setSelectedMonth(null)}
                   className={`h-8 rounded ${
-                    selectedMonth === i 
+                    selectedMonth === i + 1
                       ? 'bg-pink-500' 
                       : 'bg-cyan-400/20 hover:bg-cyan-400/40'
                   } transition-colors relative group`}
@@ -83,7 +86,7 @@ const SecurityFeatures = () => {
                   <div className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black/90 text-cyan-400
                     px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity
                     whitespace-nowrap pointer-events-none">
-                    Month {i}
+                    Month {i + 1}
                   </div>
                 </div>
               ))}
@@ -96,10 +99,10 @@ const SecurityFeatures = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <h4 className="font-audiowide text-pink-500 mb-2">Month {selectedMonth}</h4>
-                  <p className="text-sm text-gray-400">Total Released Tokens</p>
-                  <p className="text-xl font-orbitron text-cyan-400">
-                    {formatNumber(calculateReleasedTokens(selectedMonth))}
+                  <p className="text-2xl font-orbitron text-cyan-400">
+                    {formatNumber(calculateTokensReleased(selectedMonth))}
                   </p>
+                  <p className="text-sm text-gray-400 mt-2">Tokens Released</p>
                 </div>
                 <div>
                   <h4 className="font-audiowide text-pink-500 mb-2">Release Progress</h4>
@@ -110,7 +113,7 @@ const SecurityFeatures = () => {
                     />
                   </div>
                   <p className="text-sm text-gray-400 mt-2">
-                    {calculateProgress(selectedMonth).toFixed(1)}% Released
+                    {calculateProgress(selectedMonth).toFixed(1)}% Complete
                   </p>
                 </div>
               </div>
