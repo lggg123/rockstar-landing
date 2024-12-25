@@ -17,7 +17,7 @@ const sections: Section[] = [
     id: 'mission',
     title: 'MISSION DIRECTIVE',
     content: [
-      'OBJECTIVE: Establish digital dominance through $ROCKSTAR token.',
+      'OBJECTIVE: Establish digital dominance through ($ tiker to be announced) token.',
       'STATUS: Active deployment phase',
       'CLEARANCE: Level 5 - Top Secret',
       'Building a decentralized empire that will revolutionize the crypto landscape.',
@@ -168,9 +168,14 @@ const CriminalEmpire = () => {
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          viewport={{ once: true, margin: "-20px" }}
+          transition={{ 
+            duration: 0.8,
+            ease: "easeOut",
+            opacity: { duration: 1 }
+          }}
         >
           <h2 className="text-4xl md:text-5xl font-audiowide text-transparent bg-clip-text 
             bg-gradient-to-r from-pink-500 via-cyan-400 to-purple-600 mb-4">
@@ -184,8 +189,14 @@ const CriminalEmpire = () => {
           {/* Custom Terminal Section */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ 
+              duration: 0.8,
+              ease: "easeOut",
+              opacity: { duration: 1 }
+            }}
             className="bg-black/60 backdrop-blur-sm p-4 rounded-xl border-2 border-cyan-400/30
               hover:border-cyan-400 transition-all duration-500"
             onClick={() => inputRef.current?.focus()}
@@ -232,17 +243,36 @@ const CriminalEmpire = () => {
           {/* Content Section */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-4"
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            viewport={{ once: true, margin: "-20px" }}
+            transition={{ 
+              duration: 0.8,
+              ease: "easeOut",
+              opacity: { duration: 1 },
+              delay: 0.2
+            }}
+            className="space-y-6"
           >
-            {sections.map((section) => (
-              <div
+            {sections.map((section, index) => (
+              <motion.div
                 key={section.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ 
+                  opacity: unlockedSections.includes(section.id) ? 1 : 0.5,
+                  y: 0 
+                }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ 
+                  duration: 0.6,
+                  ease: "easeOut",
+                  delay: index * 0.1
+                }}
                 className={`bg-black/60 backdrop-blur-sm p-6 rounded-xl border-2 
-                  ${unlockedSections.includes(section.id) ? 'border-cyan-400/30 hover:border-cyan-400' : 'border-red-500/30 hover:border-red-500'} 
-                  transition-all duration-500 cursor-pointer`}
-                onClick={() => section.locked && unlockSection(section.id)}
+                  ${unlockedSections.includes(section.id) 
+                    ? 'border-cyan-400/30 hover:border-cyan-400' 
+                    : 'border-gray-700/30 hover:border-gray-700'
+                  } transition-all duration-500`}
               >
                 <h3 className="text-xl font-audiowide text-[#00FFFF] mb-4 flex items-center gap-2">
                   {section.title}
@@ -283,7 +313,7 @@ const CriminalEmpire = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             ))}
           </motion.div>
         </div>
