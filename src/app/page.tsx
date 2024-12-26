@@ -43,8 +43,8 @@ export default function Home() {
         
         {/* Background Image and Gradient */}
         <div className="fixed inset-0 z-0">
-          <div className="absolute inset-0 bg-hero-bg bg-[length:200%_auto] sm:bg-cover bg-center bg-fixed bg-no-repeat opacity-70"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black"></div>
+        <div className="absolute inset-0 bg-hero-bg bg-[length:200%_auto] sm:bg-cover bg-center bg-no-repeat opacity-70"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-custom-purple/30 to-custom-black"></div>
         </div>
 
         {/* Content Container */}
