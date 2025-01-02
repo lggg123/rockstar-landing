@@ -8,14 +8,14 @@ import { motion } from 'framer-motion';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const tokenomicsData = [
-  { label: 'Liquidity Pool', value: 65, tokens: '650,000,000', color: '#00ffff' }, // cyan
+  { label: 'Liquidity Pool', value: 60, tokens: '600,000,000', color: '#00ffff' }, // cyan
   { label: 'Public Sale', value: 10, tokens: '100,000,000', color: '#ff1493' }, // pink
   { label: 'Marketing & Community', value: 7, tokens: '70,000,000', color: '#4b0082' }, // indigo
-  { label: 'Staking Rewards', value: 6, tokens: '60,000,000', color: '#9400d3' }, // purple
+  { label: 'Team', value: 6, tokens: '60,000,000', color: '#7b68ee' }, // medium slate blue
+  { label: 'Game Rewards', value: 5, tokens: '50,000,000', color: '#FF10F0' },
+  { label: 'Staking Rewards', value: 5, tokens: '50,000,000', color: '#9400d3' }, // purple
   { label: 'Burn Wallet', value: 5, tokens: '50,000,000', color: '#FF0000' }, // red
-  { label: 'Team (Vested)', value: 3, tokens: '30,000,000', color: '#7b68ee' }, // medium slate blue
   { label: 'Reserve Fund', value: 2, tokens: '20,000,000', color: '#00ced1' }, // dark turquoise
-  { label: 'Airdrops', value: 2, tokens: '20,000,000', color: '#FF10F0' }, // medium slate blue
 ];
 
 const data = {
@@ -148,12 +148,11 @@ const Tokenomics = () => {
           </motion.div>
         </div>
         {/* Add a burn tracker section */}
-        <div className="bg-black/60 backdrop-blur-sm p-6 rounded-xl border-2 border-pink-500/30 hover:border-pink-500 transition-all duration-500 mt-8">
-          <h3 className="text-xl font-audiowide text-pink-500 mb-3">Burn Mechanism</h3>
-          <ul className="space-y-2 text-gray-400">
-            <li>• Automatic 0.2% burn on every transaction</li>
-            <li>• Manual burns during major milestones</li>
-            <li>• Burn tracking available on-chain</li>
+        <div className="bg-black/60 backdrop-blur-sm p-6 rounded-xl border-2 border-pink-500/30 hover:border-pink-500 transition-all duration-500 mt-8 text-center max-w-md mx-auto">
+          <h3 className="text-lg font-audiowide text-pink-500 mb-3">Burn Mechanism</h3>
+          <ul className="space-y-1.5 text-gray-400 text-sm">
+            <li>Manual burns during major milestones</li>
+            <li>Burn tracking available on-chain</li>
           </ul>
         </div>
       </div>

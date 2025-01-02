@@ -48,13 +48,14 @@ const sections: Section[] = [
     content: [
       'TOTAL SUPPLY: 1,000,000,000 $(Tiker to be announced)',
       'DISTRIBUTION:',
-      '- 70% Liquidity Pool',
+      '- 60% Liquidity Pool',
       '- 10% Public Sale',
       '- 7% Marketing & Community',
-      '- 6% Staking Rewards',
-      '- 3% Team (Vested)',
+      '- 6% Team',
+      '- 5% Staking Rewards',
+      '- 5% Game Rewards',
+      '- 5% Burn Wallet',
       '- 2% Reserve Fund',
-      '- 2% Airdrops'
     ],
     locked: true,
     type: 'assets'
