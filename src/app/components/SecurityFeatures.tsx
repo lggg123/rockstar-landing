@@ -17,7 +17,7 @@ const SecurityFeatures = () => {
           </h2>
           <p className="text-gray-400 text-lg font-orbitron max-w-3xl mx-auto mb-4">
             Our comprehensive security measures are designed to protect our community and ensure 
-            sustainable growth. No rug pulls here – we're building a lasting criminal empire together.
+            sustainable growth. No rug pulls here – we&apos;re building a lasting criminal empire together.
           </p>
           <div className="w-24 h-1 mx-auto bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
         </div>
